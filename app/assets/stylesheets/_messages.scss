@@ -153,36 +153,46 @@ body::-webkit-scrollbar {
 
 .main {
   width: calc(100vw - 380px);
+  line-height: 50px;
+  background-color: #ddd;
   &__message {
     float: left;
-    line-height: 50px;
-    width: calc(100vw - 550px);
-    background-color: #ffffff;
-    #textarea {
-    border: 0px;
-    height: 50px;
-    width: calc(100vw - 600px);
-    padding-left: 10px;
+    width: calc(100vw - 365px);
+  }
+    &__btn {
+    float: right;
+    .button {
+      display: block;
+      text-decoration: none;
+      padding: 0 25px;
+      color: #ffffff;
+      line-height: 50px;
+      background-color: #38aef0;
     }
-    &--text {
-      float: left;
-      color: #434A54;
+    .button:hover {
+      opacity: 0.8;
     }
-    &--image {
-      float: right;
+  }
+}
+.main__message {
+  &--text {
+  float: left;
+  line-height: 50px;
+  width: calc(100vw - 475px);
+  background-color: #ffffff;
+  color: #434A54;
+  border-style: none;
+  }
+  &--image {
+    .input-box__image{
+      position: absolute;
+      font-size: 20px;
+      right: 0px;
       color: #000000;
-      padding-right: 10px;
-      #img {
+      margin-right: 150px;
+      &__file {
         display: none;
       }
     }
-  }
-  &__btn {
-    float: right;
-    text-decoration: none;
-    padding: 0 25px;
-    color: #ffffff;
-    line-height: 50px;
-    background-color: #38aef0;
   }
 }

@@ -1,87 +1,86 @@
-%html
-  %body
-    .header
-      .header__logo
-        グループを作成しました
+%body
+  .header
+    .header__logo
+      グループを作成しました
 
-    .left-contents
-      .user
-        .user__name
-          ユーザー名
-        .user__menu
-        =link_to "#", class: "user__menu" do
-          = fa_icon 'cog'
-          %span<>
-        =link_to "#", class: "user__menu" do
-          = fa_icon 'edit'
-          %span<>
+  .left-contents
+    .user
+      .user__name
+        ユーザー名
+      .user__menu
+      =link_to "#groups/new", class: "user__menu" do
+        = fa_icon 'cog'
+        %span<>
+      =link_to "#users/edit", class: "user__menu" do
+        = fa_icon 'edit'
+        %span<>
 
-      .list
-        .list__group
-          .list__title
-            グループ名　その１
-          .list__message
-            メッセージ　その１
-        .list__group
-          .list__title
-            グループ名　その２２２２２
-          .list__message
-            メッセージ　その２２２２２
+    .list
+      .list__group
+        .list__title
+          グループ名　その１
+        .list__message
+          メッセージ　その１
+      .list__group
+        .list__title
+          グループ名　その２２２２２
+        .list__message
+          メッセージ　その２２２２２
 
-    .right-contents
-      .top
-        .top-left
-          .top-left__title
-            グループ名
-          .top-left__member
-            Member：メンバー名
-        .top-right
-          .top-right__edit
-          =link_to "#",class: "top-right__btn" do
-            Edit
+  .right-contents
+    .top
+      .top-left
+        .top-left__title
+          グループ名
+        .top-left__member
+          Member：メンバー名
+      .top-right
+        .top-right__edit
+        =link_to "#groups/edit",class: "top-right__btn" do
+          Edit
 
-      .chat
-        .chat__message
-          .chat__message--member
-            メンバー名１
-          .chat__message--date
-            2020/20/20(Mon) 20:20:20
-          .chat__message--message
-            メッセージ１
-          .chat__message--member
-            メンバー名２
-          .chat__message--date
-            2020/20/20(Mon) 20:20:20
-          .chat__message--message
-            メッセージ２
-          .chat__message--member
-            メンバー名　上限これくらい
-          .chat__message--date
-            2020/20/20(Mon) 20:20:20
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
-          .chat__message--message
-            メッセージ３３３３３３３３３３３３３３３３３３３３
+    .chat
+      .chat__message
+        .chat__message--member
+          メンバー名１
+        .chat__message--date
+          2020/20/20(Mon) 20:20:20
+        .chat__message--message
+          メッセージ１
+        .chat__message--member
+          メンバー名２
+        .chat__message--date
+          2020/20/20(Mon) 20:20:20
+        .chat__message--message
+          メッセージ２
+        .chat__message--member
+          メンバー名　上限これくらい
+        .chat__message--date
+          2020/20/20(Mon) 20:20:20
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
+        .chat__message--message
+          メッセージ３３３３３３３３３３３３３３３３３３３３
 
-      .form
-        .main
-          .main__message
-            .main__message--text
-              %input#textarea{:placeholder => "message", :type => "text", :name => "text"}
-            .main__message--image
-              %label{:for => "img"}
-                = fa_icon 'image'
-                %input#img{:type => "file", :name => "image"}
+    .form
+      .main
+        .main__message
+          .main__message--text
+            = form_for("@##""@#") do |f|
+              %input.main__message--text{id: "message_content", name: "messages[content]", placeholder: " type a message", type: "text"}
+                .main__message--image
+                  %label.input-box__image{for: "message_image"}
+                    = fa_icon 'edit'
+                    %input.input-box__image__file{id: "message_image", name: "message[image]", type: "file"}
           .main__btn
-            =link_to "#",class: "main__btn" do
-              Send
+            %input.button{type: "submit", value: "Send"}
