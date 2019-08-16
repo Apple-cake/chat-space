@@ -1,17 +1,17 @@
 %body
-  .header
-    .header__logo
-      グループを作成しました
+  -# .header
+  -#   .header__logo
+  -#     グループを作成しました
 
   .left-contents
     .user
       .user__name
-        ユーザー名
+        = current_user.name
       .user__menu
-      =link_to "#groups/new", class: "user__menu" do
+      =link_to "groups/new", class: "user__menu" do
         = fa_icon 'cog'
         %span<>
-      =link_to "#users/edit", class: "user__menu" do
+      =link_to "users/edit", class: "user__menu" do
         = fa_icon 'edit'
         %span<>
 
@@ -80,7 +80,7 @@
               %input.main__message--text{id: "message_content", name: "messages[content]", placeholder: " type a message", type: "text"}
                 .main__message--image
                   %label.input-box__image{for: "message_image"}
-                    = fa_icon 'edit'
+                    = fa_icon 'image'
                     %input.input-box__image__file{id: "message_image", name: "message[image]", type: "file"}
           .main__btn
             %input.button{type: "submit", value: "Send"}
