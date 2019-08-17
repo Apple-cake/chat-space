@@ -1,0 +1,53 @@
+a {
+    text-decoration: none;
+}
+
+.side-bar {
+  float: left;
+  width: 300px;
+  color: #ffffff;
+
+  .header {
+    display: flex;
+    height: 100px;
+    padding: 0 20px;
+    background-color: #253141;
+    align-items: center;
+    &__box {
+      display: flex;
+      font-weight: bold;
+      justify-content: space-between;
+      width: 100%;
+      &__name {
+        font-weight: bold;
+      }
+      &__menu {
+        display: flex;
+        .icon {
+          margin-left: 5px;
+          font-size: 16px;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .groups {
+    overflow: scroll;
+    height: calc(100vh - 100px);
+    padding: 20px 20px 0;
+    background-color: #2f3e51;
+    &__group {
+      &__name {
+        font-size: 15px;
+        margin-bottom: 5px;
+        color: #ffffff;
+      }
+      &__message {
+        font-size: 11px;
+        margin-bottom: 40px;
+        color: #ffffff;
+      }
+    }
+  }
+}

@@ -1,31 +1,30 @@
 %body
-  -# .header
-  -#   .header__logo
-  -#     グループを作成しました
 
   .left-contents
-    .user
-      .user__name
-        = current_user.name
-      .user__menu
-      =link_to "groups/new", class: "user__menu" do
-        = fa_icon 'cog'
-        %span<>
-      =link_to "users/edit", class: "user__menu" do
-        = fa_icon 'edit'
-        %span<>
+    = render 'shared/side_bar'
+    -# .user
+    -#   .user__box
+    -#     .user__box__name
+    -#       = current_user.name
+    -#     .user__box__menu
+    -#       =link_to "groups/new", class: "user__box__menu__icon" do
+    -#         = fa_icon 'edit'
+    -#         %span<>
+    -#       =link_to "users/edit", class: "user__box__menu__icon" do
+    -#         = fa_icon 'cog'
+    -#         %span<>
 
-    .list
-      .list__group
-        .list__title
-          グループ名　その１
-        .list__message
-          メッセージ　その１
-      .list__group
-        .list__title
-          グループ名　その２２２２２
-        .list__message
-          メッセージ　その２２２２２
+    -# .list
+    -#   .list__group
+    -#     .list__title
+    -#       グループ名　その１
+    -#     .list__message
+    -#       メッセージ　その１
+    -#   .list__group
+    -#     .list__title
+    -#       グループ名　その２２２２２
+    -#     .list__message
+    -#       メッセージ　その２２２２２
 
   .right-contents
     .top
@@ -36,7 +35,7 @@
           Member：メンバー名
       .top-right
         .top-right__edit
-        =link_to "#groups/edit",class: "top-right__btn" do
+        =link_to "edit",class: "top-right__btn" do
           Edit
 
     .chat
