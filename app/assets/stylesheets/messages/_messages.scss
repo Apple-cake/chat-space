@@ -21,7 +21,6 @@ body {
   .top {
     display: flex;
     height: 100px;
-    width: calc(100vw - 300px);
     padding: 0 40px;
     justify-content: space-between;
     border-bottom:1px solid #eeeeee;
@@ -53,26 +52,33 @@ body {
     }
   }
 
-  .chat {
+  .messages {
     height: calc(100vh - 190px);
-    padding: 46px 40px;
-    color: #434A54;
+    padding: 20px 40px;
     background-color: #fafafa;
     overflow: scroll;
-    &__message {
-      &--member {
-        float: left;
-        padding-right: 10px;
+  }
+  .message {
+    padding-bottom: 40px;
+    &__upper-message {
+      display: flex;
+      margin-bottom: 10px;
+      &__user-name {
         font-size: 16px;
+        color: #434a54;
         font-weight: bold;
       }
-      &--date {
+      &__date {
         font-size: 12px;
         color: #999999;
+        margin-left: 10px;
       }
-      &--message {
-        padding: 10px 0 40px;
+    }
+    &__lower-message {
+      &__content {
         font-size: 14px;
+        color: #434a54;
+        margin-bottom: 10px;
       }
     }
   }
@@ -81,52 +87,44 @@ body {
       height: 90px;
       padding: 20px 40px;
       background-color: #ddd;
-  }
-
-  .main {
-    width: calc(100vw - 380px);
-    line-height: 50px;
-    background-color: #ddd;
-    &__message {
-      float: left;
-      width: calc(100vw - 365px);
-    }
-      &__btn {
-      float: right;
-      .button {
-        display: block;
-        text-decoration: none;
+      .box {
+        position: relative;
+        width: 100%;
+        &__message {
+        height: 50px;
+        width: calc(100vw - 495px);
+        padding: 0 10px 0 10px;
+        color: #434A54;
+        border-style: none;
+        }
+        &__image {
+          position: absolute;
+          font-size: 20px;
+          height: 50px;
+          top: 10px;
+          right: 130px;
+          .icon {
+            cursor: pointer;
+          }
+          .hidden {
+            display: none;
+          }
+        }
+      }
+      &__submit {
+        position: absolute;
+        font-size: 16px;
+        width:100px;
+        height: 50px;
+        margin-left: 15px;
         padding: 0 25px;
         color: #ffffff;
-        line-height: 50px;
         background-color: #38aef0;
-      }
-      .button:hover {
-        opacity: 0.8;
-      }
-    }
-  }
-  .main__message {
-    &--text {
-    float: left;
-    line-height: 50px;
-    width: calc(100vw - 475px);
-    background-color: #ffffff;
-    color: #434A54;
-    border-style: none;
-    }
-    &--image {
-      .input-box__image{
-        position: absolute;
-        font-size: 20px;
-        right: 0px;
-        color: #000000;
-        margin-right: 150px;
-        &__file {
-          display: none;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+          background-color: #38f050;
         }
       }
     }
   }
-
-}
