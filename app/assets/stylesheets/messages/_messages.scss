@@ -54,12 +54,12 @@ body {
 
   .messages {
     height: calc(100vh - 190px);
-    padding: 20px 40px;
+    padding-top: 46px;
     background-color: #fafafa;
     overflow: scroll;
   }
   .message {
-    padding-bottom: 40px;
+    padding: 0 0 40px 40px;
     &__upper-message {
       display: flex;
       margin-bottom: 10px;
