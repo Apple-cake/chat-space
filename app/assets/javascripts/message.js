@@ -12,10 +12,10 @@ $(function(){
                     </div>
                   </div>
                   <div class="message__lower-message">
-                      <p class="message__lower-message__content">
-                        ${message.content}
-                      </p>
-                      ${message.image.url}
+                    <p class="message__lower-message__content">
+                      ${message.content}
+                    </p>
+                      <img src=${message.image}>
                   </div>
                 </div>
                 `
@@ -33,9 +33,9 @@ $(function(){
                     </div>
                   </div>
                   <div class="message__lower-message">
-                      <p class="message__lower-message__content">
-                        ${message.content}
-                      </p>
+                    <p class="message__lower-message__content">
+                      ${message.content}
+                    </p>
                   </div>
                 </div>
                 `
