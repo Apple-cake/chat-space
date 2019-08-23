@@ -1,7 +1,14 @@
 $(function(){
   function buildHTML(message){
-    var html = `<p>
-                </p>`
+    var html = `
+          ${message.user.name}
+          ${message.created_at.strftime("%Y/%m/%d %H:%M")}
+          ${if message.content.present}
+          <p class="message__lower-message__content">
+          ${message.content}
+          </p>
+          ${image_tag message.image.url, class: 'message__lower-message__image'}
+              `
     return html;
   }
   $('#new_message').on('submit', function(e){
@@ -19,7 +26,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('.textbox').val('')
+      $('form')[0].reset();
     })
     .fail(function(){
       alert('メッセージエラー');
