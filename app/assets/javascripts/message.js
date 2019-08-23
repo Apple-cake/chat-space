@@ -5,18 +5,18 @@ $(function(){
                 <div class="message">
                   <div class="message__upper-message">
                     <div class="message__upper-message__user-name">
-                      ${message.user.name}
+                      ${message.user_name}
                     </div>
                     <div class="message__upper-message__date">
-                      ${message.created_at.strftime("%Y/%m/%d %H:%M")}
+                      ${message.created_at}
                     </div>
                   </div>
                   <div class="message__lower-message">
                       <p class="message__lower-message__content">
                         ${message.content}
                       </p>
+                      ${message.image.url}
                   </div>
-                    ${message.image.url}
                 </div>
                 `
       return html;
@@ -26,10 +26,10 @@ $(function(){
                 <div class="message">
                   <div class="message__upper-message">
                     <div class="message__upper-message__user-name">
-                      ${message.user.name}
+                      ${message.user_name}
                     </div>
                     <div class="message__upper-message__date">
-                      ${message.created_at.strftime("%Y/%m/%d %H:%M")}
+                      ${message.created_at}
                     </div>
                   </div>
                   <div class="message__lower-message">
@@ -57,11 +57,12 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
+      $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
       $('form')[0].reset()
     })
     .fail(function(){
       alert('メッセージエラー');
     })
-
+    return false;
   })
 });
