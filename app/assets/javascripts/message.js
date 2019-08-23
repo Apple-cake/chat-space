@@ -1,6 +1,5 @@
 $(function(){
   function buildHTML(message){
-    console.log(message)
     var img = message.image.url ? message.image.url : '' ;
         var html = `
                   <div class="message">
