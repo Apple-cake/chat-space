@@ -1,46 +1,27 @@
 $(function(){
   function buildHTML(message){
-    if ( message.image ) {
-      var html = `
-                <div class="message">
-                  <div class="message__upper-message">
-                    <div class="message__upper-message__user-name">
-                      ${message.user_name}
+    console.log(message)
+    var img = message.image.url ? message.image.url : '' ;
+        var html = `
+                  <div class="message">
+                    <div class="message__upper-message">
+                      <div class="message__upper-message__user-name">
+                        ${message.user_name}
+                      </div>
+                      <div class="message__upper-message__date">
+                        ${message.created_at}
+                      </div>
                     </div>
-                    <div class="message__upper-message__date">
-                      ${message.created_at}
-                    </div>
-                  </div>
-                  <div class="message__lower-message">
-                    <p class="message__lower-message__content">
-                      ${message.content}
-                    </p>
-                      <img src=${message.image}>
-                  </div>
-                </div>
-                `
-      return html;
-    }
-    else {
-      var html = `
-                <div class="message">
-                  <div class="message__upper-message">
-                    <div class="message__upper-message__user-name">
-                      ${message.user_name}
-                    </div>
-                    <div class="message__upper-message__date">
-                      ${message.created_at}
+                    <div class="message__lower-message">
+                      <p class="message__lower-message__content">
+                        ${message.content}
+                      </p>
+                        <img src="${img}">
                     </div>
                   </div>
-                  <div class="message__lower-message">
-                    <p class="message__lower-message__content">
-                      ${message.content}
-                    </p>
-                  </div>
-                </div>
-                `
-      return html;
-    };
+                  `;
+        return html;
+
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
