@@ -1,15 +1,46 @@
 $(function(){
   function buildHTML(message){
-    var html = `
-          ${message.user.name}
-          ${message.created_at.strftime("%Y/%m/%d %H:%M")}
-          ${if message.content.present}
-          <p class="message__lower-message__content">
-          ${message.content}
-          </p>
-          ${image_tag message.image.url, class: 'message__lower-message__image'}
-              `
-    return html;
+    if ( message.image ) {
+      var html = `
+                <div class="message">
+                  <div class="message__upper-message">
+                    <div class="message__upper-message__user-name">
+                      ${message.user.name}
+                    </div>
+                    <div class="message__upper-message__date">
+                      ${message.created_at.strftime("%Y/%m/%d %H:%M")}
+                    </div>
+                  </div>
+                  <div class="message__lower-message">
+                      <p class="message__lower-message__content">
+                        ${message.content}
+                      </p>
+                  </div>
+                    ${message.image.url}
+                </div>
+                `
+      return html;
+    }
+    else {
+      var html = `
+                <div class="message">
+                  <div class="message__upper-message">
+                    <div class="message__upper-message__user-name">
+                      ${message.user.name}
+                    </div>
+                    <div class="message__upper-message__date">
+                      ${message.created_at.strftime("%Y/%m/%d %H:%M")}
+                    </div>
+                  </div>
+                  <div class="message__lower-message">
+                      <p class="message__lower-message__content">
+                        ${message.content}
+                      </p>
+                  </div>
+                </div>
+                `
+      return html;
+    };
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -26,7 +57,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('form')[0].reset();
+      $('form')[0].reset()
     })
     .fail(function(){
       alert('メッセージエラー');
