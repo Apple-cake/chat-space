@@ -9,6 +9,8 @@
           =@group.name
         .top-left__member
           Member：
+          - @group.users.each do |user|
+            = user.name
       .top-right
         .top-right__edit
         =link_to "edit",class: "top-right__btn" do
