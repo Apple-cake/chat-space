@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   function buildHTML(message){
     var img = message.image.url ? message.image.url : '' ;
         var html = `
@@ -67,5 +67,7 @@ $(document).on('turbolinks:load', function(){
       // alert('自動更新エラー')
     })
   };
-  setInterval(reloadMessages, 10000);
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    setInterval(reloadMessages, 5000);
+  };
 });
