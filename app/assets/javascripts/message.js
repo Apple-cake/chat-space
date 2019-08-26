@@ -54,7 +54,6 @@ $(function(){
       data: {id: last_message_id }
     })
     .done(function(messages) {
-      // console.log('success');
       var insertHTML = '';
       messages.forEach(function(message) {
         insertHTML += buildHTML(message)
@@ -63,8 +62,7 @@ $(function(){
       $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
     })
     .fail(function() {
-      console.log('error');
-      // alert('自動更新エラー')
+      alert('自動更新エラー')
     })
   };
   if (window.location.href.match(/\/groups\/\d+\/messages/)){
