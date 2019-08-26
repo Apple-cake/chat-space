@@ -13,7 +13,7 @@
             = user.name
       .top-right
         .top-right__edit
-        =link_to "edit",class: "top-right__btn" do
+        =link_to "edit",class: "top-right__btn", data: {"turbolinks" => false} do
           Edit
     .messages
       = render @messages
