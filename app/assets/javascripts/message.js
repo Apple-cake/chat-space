@@ -1,9 +1,9 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   function buildHTML(message){
     var img = message.image.url ? message.image.url : '' ;
         var html = `
-                  <div class="message">
-                    <div class="message__upper-message">
+                  <div class="message" data-id="${message.id}">
+                    <div class="message__upper-message" data-id="${message.id}">
                       <div class="message__upper-message__user-name">
                         ${message.user_name}
                       </div>
@@ -44,8 +44,8 @@ $(function(){
     });
     return false;
   });
-  var reloadMessages = function() {
-    last_message_id = $('.message:last').data('message-id');
+  var reloadMessages = function(){
+    var last_message_id = $('.message').last().data('id');
     $.ajax({
       url: location.href,
       type: 'get',
@@ -53,19 +53,16 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(data) {
+      console.log('success');
       var insertHTML = '';
-      data.forEach()
-        if (data.length) {
-          insertHTML += buildHTML(data);
-        }
+      insertHTML += buildHTML(data);
       $('.messages').append(insertHTML)
       $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
-
     })
     .fail(function() {
-      alert('自動更新に失敗しました')
+      console.log('error');
+      // alert('自動更新エラー')
     });
   };
-  console.log(last_message_id);
-  // setInterval(reloadMessages, 1000000);
+  setInterval(reloadMessages, 10000);
 });
