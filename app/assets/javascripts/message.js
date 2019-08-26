@@ -41,28 +41,31 @@ $(document).on('turbolinks:load', function(){
     })
     .fail(function(){
       alert('メッセージエラー');
-    });
+    })
     return false;
   });
   var reloadMessages = function(){
-    var last_message_id = $('.message').last().data('id');
+    var last_message_id = $('.message:last').data("id");
+    var group_id = $('.top-left__title').data("group_id");
     $.ajax({
-      url: location.href,
-      type: 'get',
+      url: 'api/messages',
+      type: "GET",
       dataType: 'json',
-      data: {id: last_message_id}
+      data: {id: last_message_id }
     })
-    .done(function(data) {
-      console.log('success');
+    .done(function(messages) {
+      // console.log('success');
       var insertHTML = '';
-      insertHTML += buildHTML(data);
-      $('.messages').append(insertHTML)
+      messages.forEach(function(message) {
+        insertHTML += buildHTML(message)
+        $('.messages').append(insertHTML);
+      });
       $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
     })
     .fail(function() {
       console.log('error');
       // alert('自動更新エラー')
-    });
+    })
   };
   setInterval(reloadMessages, 10000);
 });
