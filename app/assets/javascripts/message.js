@@ -1,9 +1,9 @@
-$(function(){
+$(document).on('turbolinks:load',(function(){
   function buildHTML(message){
     var img = message.image.url ? message.image.url : '' ;
         var html = `
-                  <div class="message">
-                    <div class="message__upper-message">
+                  <div class="message" data-id="${message.id}">
+                    <div class="message__upper-message" data-id="${message.id}">
                       <div class="message__upper-message__user-name">
                         ${message.user_name}
                       </div>
@@ -31,7 +31,7 @@ $(function(){
       data: formData,
       dataType: 'json',
       processData: false,
-      contentType: false
+      contentType: false,
     })
     .done(function(data){
       var html = buildHTML(data);
@@ -43,5 +43,29 @@ $(function(){
       alert('メッセージエラー');
     })
     return false;
-  })
+  });
+  var reloadMessages = function(){
+    var last_message_id = $('.message:last').data("id");
+    var group_id = $('.top-left__title').data("group_id");
+    $.ajax({
+      url: 'api/messages',
+      type: "GET",
+      dataType: 'json',
+      data: {id: last_message_id }
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      messages.forEach(function(message) {
+        insertHTML += buildHTML(message)
+        $('.messages').append(insertHTML);
+      });
+      $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
+    })
+    .fail(function() {
+      alert('自動更新エラー')
+    })
+  };
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    setInterval(reloadMessages, 5000);
+  };
 });

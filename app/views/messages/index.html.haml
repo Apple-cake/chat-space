@@ -5,7 +5,7 @@
   .right-contents
     .top
       .top-left
-        .top-left__title
+        .top-left__title{"data-group_id": "#{@group.id}"}
           =@group.name
         .top-left__member
           Member：
@@ -13,7 +13,7 @@
             = user.name
       .top-right
         .top-right__edit
-        =link_to "edit",class: "top-right__btn" do
+        =link_to "edit",class: "top-right__btn", data: {"turbolinks" => false} do
           Edit
     .messages
       = render @messages

@@ -61,7 +61,7 @@ $(document).on('turbolinks:load', function(){
       $(this).parent().remove();
       addUser(user_id,user_name);
     });
-    $(document).on("click", ".user-search-remove", function () {
+    $(document).on("click",".user-search-remove",function () {
       $(this).parent().remove();
     });
   });
