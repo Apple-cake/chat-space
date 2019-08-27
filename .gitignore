@@ -15,6 +15,4 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-# ユーザーがアップロードした画像をコミットしないための記述
-public/uploads/*
+config/secrets.yml
