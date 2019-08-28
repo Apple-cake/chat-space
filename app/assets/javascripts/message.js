@@ -44,7 +44,6 @@ $(document).on('turbolinks:load',(function(){
     .always(function () {
       $(".form__submit").removeAttr("disabled");
       $('form')[0].reset()
-      return false;
     })
   });
   var reloadMessages = function(){
