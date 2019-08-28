@@ -58,8 +58,8 @@ $(document).on('turbolinks:load',(function(){
       messages.forEach(function(message) {
         insertHTML += buildHTML(message)
         $('.messages').append(insertHTML);
+        $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
       });
-      $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
     })
     .fail(function() {
       alert('自動更新エラー')
