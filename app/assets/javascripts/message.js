@@ -64,8 +64,8 @@ $(document).on('turbolinks:load',(function(){
     .fail(function() {
       alert('自動更新エラー')
     })
-  };
+  }
   if (window.location.href.match(/\/groups\/\d+\/messages/)){
-    setInterval(reloadMessages, 5000);
+    setInterval(reloadMessages, 5000)
   };
-});
+}));

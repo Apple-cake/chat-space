@@ -13,7 +13,7 @@
   .groups
     .groups__group
       - current_user.groups.each do |group|
-        = link_to group_messages_path(group), data: {"turbolinks" => false} do
+        = link_to group_messages_path(group) do
           .groups__group__name
             = group.name
           .groups__group__message
