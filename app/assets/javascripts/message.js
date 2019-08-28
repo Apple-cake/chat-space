@@ -36,13 +36,16 @@ $(document).on('turbolinks:load',(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
-      $('form')[0].reset()
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
     })
     .fail(function(){
       alert('メッセージエラー');
     })
-    return false;
+    .always(function () {
+      $(".form__submit").removeAttr("disabled");
+      $('form')[0].reset()
+      return false;
+    })
   });
   var reloadMessages = function(){
     var last_message_id = $('.message:last').data("id");
@@ -58,7 +61,7 @@ $(document).on('turbolinks:load',(function(){
       messages.forEach(function(message) {
         insertHTML += buildHTML(message)
         $('.messages').append(insertHTML);
-        $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
       });
     })
     .fail(function() {
