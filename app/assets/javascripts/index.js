@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $(function() {
 
     var search_result = $("#user-search-result");
@@ -31,8 +31,10 @@ $(document).on('turbolinks:load', function(){
                 `;
       user_list.append(html);
     }
-    $("#user-search-field").on("keyup", function() {
+
+    $("#user-search-field").on("input", function() {
       var input = $("#user-search-field").val();
+      console.log(input)
       $.ajax({
         type: 'GET',
         url: '/users',
@@ -40,6 +42,7 @@ $(document).on('turbolinks:load', function(){
         dataType: 'json'
       })
       .done(function(users) {
+        console.log(users)
         $("#user-search-result").empty();
         if (users.length !== 0) {
           users.forEach(function(user){
