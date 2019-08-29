@@ -1,30 +1,30 @@
-$(document).on('turbolinks:load',(function(){
+$(function(){
   function buildHTML(message){
-    var img = message.image.url ? message.image.url : '' ;
-        var html = `
-                  <div class="message" data-id="${message.id}">
-                    <div class="message__upper-message" data-id="${message.id}">
-                      <div class="message__upper-message__user-name">
-                        ${message.user_name}
-                      </div>
-                      <div class="message__upper-message__date">
-                        ${message.created_at}
-                      </div>
-                    </div>
-                    <div class="message__lower-message">
-                      <p class="message__lower-message__content">
-                        ${message.content}
-                      </p>
-                        <img src="${img}">
-                    </div>
+    var img = message.image ? message.image : '' ;
+    var html = `
+              <div class="message" data-id="${message.id}">
+                <div class="message__upper-message" data-id="${message.id}">
+                  <div class="message__upper-message__user-name">
+                    ${message.user_name}
                   </div>
-                  `;
-        return html;
+                  <div class="message__upper-message__date">
+                    ${message.created_at}
+                  </div>
+                </div>
+                <div class="message__lower-message">
+                  <p class="message__lower-message__content">
+                    ${message.content}
+                  </p>
+                    <img src="${img}">
+                </div>
+              </div>
+              `;
+    return html;
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
       $.ajax({
         url: url,
         type: "POST",
@@ -71,4 +71,4 @@ $(document).on('turbolinks:load',(function(){
   if (window.location.href.match(/\/groups\/\d+\/messages/)){
     setInterval(reloadMessages, 5000)
   };
-}));
+});
