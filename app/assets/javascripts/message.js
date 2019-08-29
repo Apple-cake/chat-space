@@ -63,7 +63,6 @@ $(function(){
         $('.messages').append(insertHTML);
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
       });
-      $('.messages').delay(100).animate({scrollTop: $('.messages')[0].scrollHeight}, 'swing');
     })
     .fail(function() {
       alert('自動更新エラー')
