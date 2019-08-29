@@ -15,7 +15,7 @@ $(function(){
                   <p class="message__lower-message__content">
                     ${message.content}
                   </p>
-                    <img src="${img}">
+                    <img class="message__lower-message__image" src="${img}">
                 </div>
               </div>
               `;
@@ -31,7 +31,7 @@ $(function(){
         data: formData,
         dataType: 'json',
         processData: false,
-        contentType: false,
+        contentType: false
       })
       .done(function(data){
         var html = buildHTML(data);
@@ -49,9 +49,9 @@ $(function(){
   });
   var reloadMessages = function(){
     var last_message_id = $('.message:last').data("id");
-    var group_id = $('.top-left__title').data("group_id");
+    var url = location.href.replace('/messages', '') + '/api/messages';
     $.ajax({
-      url: 'api/messages',
+      url: url,
       type: "GET",
       dataType: 'json',
       data: {id: last_message_id }
