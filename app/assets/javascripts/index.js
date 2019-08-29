@@ -42,7 +42,9 @@ $(function(){
       })
       .done(function(users) {
         $("#user-search-result").empty();
-        if (users.length !== 0) {
+        if (input == 0) {
+        }
+        else if (users.length !== 0){
           users.forEach(function(user){
             appendUser(user);
           });
@@ -60,6 +62,7 @@ $(function(){
       var user_id = $(this).data('user-id');
       var user_name = $(this).data('user-name');
       $(this).parent().remove();
+      $("#user-search-field").val("");
       addUser(user_id,user_name);
     });
     $(document).on("click",".user-search-remove",function () {
