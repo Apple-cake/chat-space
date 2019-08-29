@@ -19,7 +19,7 @@
       = render @messages
     .form
       .box
-        = form_for([@group, @message],html:{class: 'inner_form'}) do |f|
+        = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'box__message', placeholder: 'type a message'
           = f.label :image, class: 'box__image' do
             = fa_icon 'picture-o', class: 'icon'
