@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message){
-    var img = message.image ? message.image : '' ;
+    var img = message.image.url ? message.image.url : '' ;
     var html = `
               <div class="message" data-id="${message.id}">
                 <div class="message__upper-message" data-id="${message.id}">
@@ -22,6 +22,7 @@ $(function(){
     return html;
   }
   $('#new_message').on('submit', function(e){
+    $(":submit", this).prop("disabled", true);
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -45,6 +46,9 @@ $(function(){
       })
       .always(function () {
         $(".form__submit").removeAttr("disabled");
+        setTimeout(function() {
+          $(":submit", self).prop("disabled", false);
+        }, 500);
       })
   });
   var reloadMessages = function(){
@@ -69,6 +73,6 @@ $(function(){
     })
   }
   if (window.location.href.match(/\/groups\/\d+\/messages/)){
-    setInterval(reloadMessages, 10000)
+    setInterval(reloadMessages, 3000)
   };
 });
